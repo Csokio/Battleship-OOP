@@ -1,4 +1,4 @@
-package com.codecool.battlehip;
+package com.codecool.battlehip.enums;
 
 public enum SquareStatus {
 
@@ -8,7 +8,7 @@ public enum SquareStatus {
     // This unicode character is returned by a SquareStatus.GetCharacter() method.
 
 
-    EMPTY('0'), SHIP('X'), HIT('H'), MISSED('M'), SUNK('S');
+    EMPTY('0'), SHIP('X'), HIT('H'), MISSED('M'), SKUNK('S');   //just joke :)
 
     private final char status;
 

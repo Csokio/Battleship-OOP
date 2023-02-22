@@ -8,12 +8,7 @@ public class Square {
     }
 
 
-    /*
-    public boolean hasShip() {
 
-    }
-
-     */
 
     // contains X and Y fields.
 
