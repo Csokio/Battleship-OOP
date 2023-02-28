@@ -2,7 +2,7 @@ package com.codecool.battlehip;
 
 public class Game {
 
-    //  has a loop in which players make moves - take turn
+    // has a loop in which players make moves - take turn
 
     // has a logic which determines the flow of round.
 

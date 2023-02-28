@@ -1,49 +1,47 @@
 package com.codecool.battlehip;
 
+import com.codecool.battlehip.enums.SquareStatus;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Ship {
 
-    /*
-    Ez az osztály fogja tartalmazni a hajók tulajdonságait,
-    például a hosszukat és a pozíciójukat a táblán.
-     */
+    private final String name;
+    private final int size;
+    private final List<Square> squares;
 
-    // class has a List<Square> field.
-
-    // it contains the squares where the ship is located
-
-
-    List<Square> squares = new ArrayList<>();
-
-    private int size;
-
-    private boolean isVertical;
-
-
-    //konstruktor
-    public Ship(int size, boolean isVertical) {
-        //TODO
-        throw new UnsupportedOperationException("Not implemented yet");
+    public Ship(String name, int size) {
+        this.name = name;
+        this.size = size;
+        this.squares = new ArrayList<>();
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public int getSize() {
+        return size;
+    }
 
-    // getter
     public List<Square> getSquares() {
         return squares;
     }
 
+    public void addSquare(Square square) {
+        squares.add(square);
+    }
 
-
-    // elsüllyedt-e
     public boolean isSunk() {
-        //TODO
-        throw new UnsupportedOperationException("Not implemented yet");
+        for (Square square : squares) {
+            if (square.getStatus() == SquareStatus.SHIP) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
-
-
 }
+
+

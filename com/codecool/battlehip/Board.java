@@ -1,4 +1,8 @@
 package com.codecool.battlehip;
+import com.codecool.battlehip.enums.Color;
+import com.codecool.battlehip.enums.SquareStatus;
+
+import java.util.Scanner;
 
 public class Board {
 
@@ -22,11 +26,10 @@ public class Board {
         this.ocean = new Square[size][size];
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                this.ocean[row][col] = new Square();
+                this.ocean[row][col] = new Square(row, col);
             }
         }
     }
-
 
 
 
@@ -35,7 +38,7 @@ public class Board {
         return size;
     }
 
-    public Square getSquate(int row, int col) {
+    public Square getSquare(int row, int col) {
         return ocean[row][col];
     }
 
@@ -65,11 +68,21 @@ public class Board {
     }
 
 
+    public static void placeShip(Board board, Ship ship) {
 
+    }
 
-
-
-
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                sb.append(ocean[row][col].getGraphicalRepresentation() + " ");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 
 
 }
