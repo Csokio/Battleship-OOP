@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Input {
 
-    private static final ResourceBundle MESSAGES = ResourceBundle.getBundle("messages", Locale.forLanguageTag("en"));
+    static final ResourceBundle MESSAGES = ResourceBundle.getBundle("messages", Locale.forLanguageTag("en"));
 
 
     public static int getShipLength() {
@@ -19,7 +19,7 @@ public class Input {
         //TODO validation
         ShipType shipType = ShipType.valueOf(input);
         return shipType.getSize();
-        }
+    }
 
 
     public static int getBoardLength() {
@@ -30,8 +30,7 @@ public class Input {
         return input;
     }
 
-
-    }
+}
 
 
     /*

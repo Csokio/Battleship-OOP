@@ -20,4 +20,5 @@ public enum SquareStatus {
         return status;
     }
 
+
 }

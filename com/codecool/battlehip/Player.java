@@ -1,55 +1,74 @@
 package com.codecool.battlehip;
 
+import com.codecool.battlehip.enums.SquareStatus;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Player {
+    private final String name;
+    private Board ownBoard;
+    private Board opponentBoard;
 
-    /*
-
-    private String name;
-    private int score;
-    private int numShips;
-    private Board board;
-    private List<Ship> ships;
-
-    public Player(String name, int numShips) {
+    public Player(String name, Board ownBoard, Board opponentBoard) {
         this.name = name;
-        this.score = 0;
-        this.numShips = numShips;
-        this.board = new Board();
-        this.ships = new ArrayList<>();
+        this.ownBoard = ownBoard;
+        this.opponentBoard = opponentBoard;
     }
-
-    public String getName() {
+     public String getName() {
         return name;
     }
 
-    public int getScore() {
-        return score;
+    public Board getOwnBoard() {
+        return ownBoard;
     }
 
-    public int getNumShips() {
-        return numShips;
+    public Board getOpponentBoard() {
+        return opponentBoard;
     }
 
-    public Board getBoard() {
-        return board;
+    public void attack(int row, int col) {
+        Square square = opponentBoard.getSquare(row, col);
+        square.takeAttack();
     }
 
-    public List<Ship> getShips() {
-        return ships;
+    public void takeAttack(int row, int col) {
+        Square square = opponentBoard.getSquare(row, col);
+        if (square.getStatus() == SquareStatus.SHIP) {
+            square.setStatus(SquareStatus.HIT);
+            System.out.println(name + " hit opponent's ship at (" + row + "," + col + ")");
+        } else {
+            square.setStatus(SquareStatus.MISSED);
+            System.out.println(name + " missed opponent's ship at (" + row + "," + col + ")");
+        }
     }
 
-    public void incrementScore() {
-        score++;
+
+    public void makeAttack(Scanner scanner) {
+        System.out.println(name + ", enter the coordinates of your attack (row col): ");
+        int row = scanner.nextInt();
+        int col = scanner.nextInt();
+        Square square = opponentBoard.getSquare(row, col);
+
+        square.takeAttack();
+        if (square.getStatus() == SquareStatus.HIT) {
+            System.out.println(name + " hit opponent's ship at (" + row + "," + col + ")");
+            if (square.checkSunk()) {
+                System.out.println(name + " sunk opponent's ship!");
+            }
+        } else {
+            square.setStatus(SquareStatus.MISSED);
+            System.out.println(name + " missed opponent's ship at (" + row + "," + col + ")");
+        }
+        System.out.println(opponentBoard);
     }
 
-    public void decrementNumShips() {
-        numShips--;
-    }
 
-    public void placeShips() {
+
+
+    }
+/*
         // TODO: Implement ship placement logic
     }
 
@@ -71,13 +90,10 @@ public class Player {
         } else {
             System.out.println("Miss!");
         }
-    }
 
-    public boolean isAlive() {
-        return numShips > 0;
-    }
 
-     */
+
+
 
 
 
@@ -96,5 +112,3 @@ public class Player {
 
 
 
-
-}

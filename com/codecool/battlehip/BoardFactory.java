@@ -1,10 +1,9 @@
 package com.codecool.battlehip;
 
 import com.codecool.battlehip.enums.Color;
+import com.codecool.battlehip.enums.ShipType;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.Scanner;
+import java.util.*;
 
 public class BoardFactory {
 
@@ -21,28 +20,58 @@ public class BoardFactory {
     }
 
 
+    public int shipCounter = 0;
+
+
 
 
     public void manualPlacement(Board board, Scanner scanner, int size, boolean isHorizontal) {
-        System.out.println(Color.TEXT_BLUE + MESSAGES.getString("askForCoordinates"));
-        int row = scanner.nextInt();
-        int col = scanner.nextInt();
+        boolean isPlacementOk = false;
+        while (!isPlacementOk) {
+            System.out.println("Please enter the row and column of the ship's starting position: ");
+            int row = scanner.nextInt();
+            int col = scanner.nextInt();
 
-        if (!board.isPlacementOk(row, col, size, isHorizontal)) {
-            System.out.println(Color.TEXT_RED + MESSAGES.getString("invalidPlacement"));
-            return;
-        }
+            isPlacementOk = board.isPlacementOk(row, col, size, isHorizontal);
 
-        if (isHorizontal) {
-            for (int c = col; c < col + size; c++) {
-                board.getSquare(row, c).setHasShip(true);
+            if (board.isPlacementOk(row, col, size, isHorizontal)) {
+                Ship ship = new Ship(ShipType.getBySize(size));
+
+                if (isHorizontal) {
+                    for (int i = 0; i < size; i++) {
+                        Square square = board.getSquare(row, col + i);
+                        ship.addSquare(square);
+                        square.setShip(ship);
+                    }
+                } else {
+                    for (int i = 0; i < size; i++) {
+                        Square square = board.getSquare(row + i, col);
+                        ship.addSquare(square);
+                        square.setShip(ship);
+                    }
+                }
+
+                board.addShip(ship);
+                shipCounter++; // növeljük a hajók számát
+                System.out.println("Hajó elhelyezve! Jelenleg " + shipCounter + " hajó van a játékban.");
+                System.out.println(board);
+            } else {
+                System.out.println("Helytelen elhelyezési pozíció!");
             }
-        } else {
-            for (int r = row; r < row + size; r++) {
-                board.getSquare(r, col).setHasShip(true);
-            }
         }
-
-        System.out.println(board);
     }
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
