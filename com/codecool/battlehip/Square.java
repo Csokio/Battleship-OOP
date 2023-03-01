@@ -112,6 +112,7 @@ public class Square {
                 square.setStatus(SquareStatus.SKUNK);
             }
             System.out.println(ship.getName() + " has been sunk!");
+
             return true;
         }
         return false;

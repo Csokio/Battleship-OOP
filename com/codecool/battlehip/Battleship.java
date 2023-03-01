@@ -9,9 +9,11 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+import static com.codecool.battlehip.Game.gameStart;
+import static com.codecool.battlehip.Game.welcome;
+
 public class Battleship {
 
-    private static final ResourceBundle MESSAGES = ResourceBundle.getBundle("messages", Locale.forLanguageTag("en"));
 
     public static void main(String[] args) throws SQLException {
 
@@ -20,8 +22,8 @@ public class Battleship {
 
 
     }
-
-    public static void gameStart() throws SQLException {
+}
+    /*public static void gameStart() throws SQLException {
         int mokus = Input.getBoardLength();
         Board board = new Board(mokus);
 
@@ -38,15 +40,18 @@ public class Battleship {
 
         //int toki = 0;
         int count = 1;
-        while(count < 4){
+        while(count < 2){
             int toki = Input.getShipLength();
             factory.manualPlacement(board, scanner, toki, true);
             count++;
         }
 
 
-        while(factory.shipCounter > 0) {
+        while(player1.getSunkShipCounter() != factory.shipCounter) {
             player1.makeAttack(scanner2);
+            if (player1.getSunkShipCounter() == factory.shipCounter) {
+                System.out.println("Game over");
+            }
         }
         //System.out.println(board);
     }
@@ -69,4 +74,4 @@ public class Battleship {
 
     // display high scores, and exit
 
-}
+}*/

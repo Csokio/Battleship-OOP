@@ -11,6 +11,12 @@ public class Player {
     private Board ownBoard;
     private Board opponentBoard;
 
+    private int sunkShipCounter = 0;
+
+    public int getSunkShipCounter() {
+        return sunkShipCounter;
+    }
+
     public Player(String name, Board ownBoard, Board opponentBoard) {
         this.name = name;
         this.ownBoard = ownBoard;
@@ -56,6 +62,7 @@ public class Player {
             System.out.println(name + " hit opponent's ship at (" + row + "," + col + ")");
             if (square.checkSunk()) {
                 System.out.println(name + " sunk opponent's ship!");
+                sunkShipCounter++;
             }
         } else {
             square.setStatus(SquareStatus.MISSED);

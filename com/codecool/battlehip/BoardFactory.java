@@ -19,10 +19,19 @@ public class BoardFactory {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-
     public int shipCounter = 0;
 
+    public void setShipCounter(int shipCounter) {
+        this.shipCounter = shipCounter;
+    }
 
+    int getShipCounter(){
+        return shipCounter;
+    }
+
+    public void decreaseShipCounter() {
+        shipCounter--;
+    }
 
 
     public void manualPlacement(Board board, Scanner scanner, int size, boolean isHorizontal) {

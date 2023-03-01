@@ -26,7 +26,7 @@ public class Board {
 
     // has an isPlacementOk() method that verifies if placement of ship is possible.
 
-    private int shipCounter = 0;
+    //private int shipCounter = 0;
 
 
     // konstruktor
@@ -74,7 +74,7 @@ public class Board {
         return true;
     }
 
-    public void placeShip(Board board, Scanner scanner, Ship[] ships) throws SQLException {
+    /*public void placeShip(Board board, Scanner scanner, Ship[] ships) throws SQLException {
         System.out.println(Color.TEXT_BLUE + MESSAGES.getString("askForShipPlacement"));
         int size = scanner.nextInt();
         boolean isHorizontal = scanner.nextBoolean();
@@ -93,7 +93,7 @@ public class Board {
         }
 
         ships[shipCounter++] = newShip;
-    }
+    }*/
 
    /* public void placeShip(Board board, Scanner scanner, int numShips) throws SQLException {
         BoardFactory factory = new BoardFactory();
