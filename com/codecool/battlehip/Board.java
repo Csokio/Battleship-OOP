@@ -4,29 +4,17 @@ import com.codecool.battlehip.enums.ShipType;
 import com.codecool.battlehip.enums.SquareStatus;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-import static com.codecool.battlehip.Input.MESSAGES;
-import static javax.sql.rowset.RowSetProvider.newFactory;
+import static com.codecool.battlehip.Battleship.MESSAGES;
 
 public class Board {
-
-    /*
-    Ez az osztály fogja tartalmazni a játéktáblát, valamint azon metódusokat,
-    amelyekkel hozzáadhatjuk a hajókat a táblához, ellenőrizhetjük a találatokat és a játék végét is.
-     */
 
     private final int size;
 
     private Square[][] ocean;
 
-    // has a Square[][] ocean field. This contains the squares that the board consists of.
-
-    // has an isPlacementOk() method that verifies if placement of ship is possible.
-
-    //private int shipCounter = 0;
+    private int shipCounter = 0;
 
 
     // konstruktor
@@ -74,7 +62,7 @@ public class Board {
         return true;
     }
 
-    /*public void placeShip(Board board, Scanner scanner, Ship[] ships) throws SQLException {
+    public void placeShip(Board board, Scanner scanner, Ship[] ships) throws SQLException {
         System.out.println(Color.TEXT_BLUE + MESSAGES.getString("askForShipPlacement"));
         int size = scanner.nextInt();
         boolean isHorizontal = scanner.nextBoolean();
@@ -93,28 +81,7 @@ public class Board {
         }
 
         ships[shipCounter++] = newShip;
-    }*/
-
-   /* public void placeShip(Board board, Scanner scanner, int numShips) throws SQLException {
-        BoardFactory factory = new BoardFactory();
-
-        for (int i = 0; i < numShips; i++) {
-            System.out.println(Color.TEXT_BLUE + MESSAGES.getString("askForShipPlacement"));
-            int size = scanner.nextInt();
-            boolean isHorizontal = scanner.nextBoolean();
-
-            ShipType shipType = ShipType.getBySize(size);
-            Ship newShip = new Ship(shipType);
-
-            factory.manualPlacement(board, scanner, size, isHorizontal);
-
-            board.addShip(newShip);
-            System.out.println(board);
-        }
-    }*/
-
-
-
+    }
 
 
     @Override

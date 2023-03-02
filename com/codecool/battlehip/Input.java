@@ -3,17 +3,16 @@ package com.codecool.battlehip;
 import com.codecool.battlehip.enums.Color;
 import com.codecool.battlehip.enums.ShipType;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class Input {
+import static com.codecool.battlehip.Battleship.MESSAGES;
 
-    static final ResourceBundle MESSAGES = ResourceBundle.getBundle("messages", Locale.forLanguageTag("en"));
+public class Input {
 
 
     public static int getShipLength() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println(Color.TEXT_YELLOW + MESSAGES.getString("chooseShipType"));
         System.out.println(Color.TEXT_BLUE + MESSAGES.getString("typeOfShip"));
         String input = scanner.nextLine().toUpperCase();
         //TODO validation
@@ -31,18 +30,3 @@ public class Input {
     }
 
 }
-
-
-    /*
-     felelős összes bemenet begyűjtéséért.
-     Minden különleges esetben külön metódust nyújt.
-     Az Input osztály kezeli a bemenet validálását.
-     */
-
-        // is responsible for gathering all input
-
-        // provides a seperate method for each case
-
-        // handles input validation
-
-

@@ -13,6 +13,8 @@ public class Ship {
 
     private int hits;
 
+    private int sunkShipCount;
+
     public Ship(String name, int size) {
         this.name = name;
         this.size = size;
@@ -62,28 +64,6 @@ public class Ship {
     }
 
 
-
-
-    //TODO
-/*
-    public Ship(ShipType type, boolean isHorizontal) {
-        this.type = type;
-        squares = new ArrayList<>();
-        isSunk = false;
-        for (int i = 0; i < type.getSize(); i++) {
-            squares.add(new Square());
-        }
-        if (isHorizontal) {
-            for (int i = 0; i < type.getSize(); i++) {
-                squares.get(i).setX(i);
-            }
-        } else {
-            for (int i = 0; i < type.getSize(); i++) {
-                squares.get(i).setY(i);
-            }
-        }
-    }
-*/
 
 }
 

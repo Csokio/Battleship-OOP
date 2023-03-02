@@ -1,23 +1,15 @@
 package com.codecool.battlehip;
 
-import com.codecool.battlehip.enums.Color;
 import com.codecool.battlehip.enums.SquareStatus;
 
-import static com.codecool.battlehip.Input.MESSAGES;
+import static com.codecool.battlehip.Battleship.MESSAGES;
+
 
 public class Square {
     private int x;
     private int y;
 
     private boolean hit;
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
 
     private SquareStatus status;
 
@@ -58,15 +50,7 @@ public class Square {
         this.y = y;
         this.status = SquareStatus.EMPTY;
     }
-    // has a SquareStatus field
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
 
     public SquareStatus getStatus() {
         return status;
@@ -76,8 +60,6 @@ public class Square {
         this.status = status;
     }
 
-
-    // has method that returns a graphical representation of SquareStatus.
 
     //TODO mellőztük a használatát
     public String getGraphicalRepresentation() {
@@ -111,7 +93,7 @@ public class Square {
             for (Square square : ship.getSquares()) {
                 square.setStatus(SquareStatus.SKUNK);
             }
-            System.out.println(ship.getName() + " has been sunk!");
+            System.out.println(ship.getName() + MESSAGES.getString("hasBeenSunk"));
 
             return true;
         }
@@ -126,14 +108,7 @@ public class Square {
         }
     }
 
-
-
 }
 
-// contains X and Y fields.
-
-    // has a SquareStatus field
-
-    // has method that returns a graphical representation of SquareStatus.
 
 

@@ -3,29 +3,20 @@ package com.codecool.battlehip;
 import com.codecool.battlehip.enums.Color;
 
 import java.sql.SQLException;
-import java.util.Locale;
-import java.util.ResourceBundle;
 import java.util.Scanner;
 
-import static com.codecool.battlehip.Input.MESSAGES;
+import static com.codecool.battlehip.Battleship.MESSAGES;
 
 public class Game {
 
-    // has a loop in which players make moves - take turn
-
-    // has a logic which determines the flow of round.
-
-    // has a condition on which game ends
-
-    // provides different game modes which use different round flows.
-
-    private static final ResourceBundle MESSAGES = ResourceBundle.getBundle("messages", Locale.forLanguageTag("en"));
 
 
     public static void gameStart() throws SQLException {
+        System.out.println(Color.TEXT_BLUE + "\nPlayer 1: Dénes");
         int mokus = Input.getBoardLength();
         Board boardDenes = new Board(mokus);
 
+        System.out.println(Color.TEXT_BLUE + "\nPlayer 2: Gizella");
         int sari = Input.getBoardLength();
         Board boardGizi = new Board(sari);
 
@@ -41,14 +32,16 @@ public class Game {
 
         //int toki = 0;
         int count = 1;
-        while (count < 4) {
+        System.out.println("\nPlayer 1: Dénes");
+        while (count < 2) {
             int toki = Input.getShipLength();
             factory.manualPlacement(boardDenes, scanner, toki, true);
             count++;
         }
 
         int count2 = 1;
-        while (count2 < 4) {
+        System.out.println("\nPlayer 2: Gizella");
+        while (count2 < 2) {
             int fokos = Input.getShipLength();
             factory2.manualPlacement(boardGizi, scanner, fokos, false);
             count2++;
@@ -58,13 +51,15 @@ public class Game {
         while (player1.getSunkShipCounter() != factory.shipCounter && player2.getSunkShipCounter() != factory2.shipCounter) {
             player1.makeAttack(scanner2);
             if (player1.getSunkShipCounter() == factory.shipCounter) {
-                System.out.println("Game over");}
+                System.out.println(Color.TEXT_PURPLE + MESSAGES.getString("winMessage1"));
+                break;
+            }
             player2.makeAttack(scanner2);
             if (player2.getSunkShipCounter() == factory2.shipCounter) {
-                System.out.println("Game over");
+                System.out.println(Color.TEXT_PURPLE + MESSAGES.getString("winMessage2"));
+                break;
                 }
             }
-            //System.out.println(board);
         }
 
 
@@ -72,6 +67,12 @@ public class Game {
             System.out.println(Color.TEXT_PURPLE + MESSAGES.getString("welcome"));
             System.out.println(Color.TEXT_CYAN + MESSAGES.getString("battleship"));
         }
+
+
+    public static void endGame() {
+        System.out.println(Color.TEXT_PURPLE + MESSAGES.getString("endGame"));
+        System.out.println(Color.TEXT_PURPLE + MESSAGES.getString("endShip"));
+    }
 
 
 

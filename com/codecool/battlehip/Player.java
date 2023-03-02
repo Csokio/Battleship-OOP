@@ -1,17 +1,18 @@
 package com.codecool.battlehip;
 
+import com.codecool.battlehip.enums.Color;
 import com.codecool.battlehip.enums.SquareStatus;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+
+import static com.codecool.battlehip.Battleship.MESSAGES;
 
 public class Player {
     private final String name;
     private Board ownBoard;
     private Board opponentBoard;
-
     private int sunkShipCounter = 0;
+
 
     public int getSunkShipCounter() {
         return sunkShipCounter;
@@ -43,79 +44,36 @@ public class Player {
         Square square = opponentBoard.getSquare(row, col);
         if (square.getStatus() == SquareStatus.SHIP) {
             square.setStatus(SquareStatus.HIT);
-            System.out.println(name + " hit opponent's ship at (" + row + "," + col + ")");
+            System.out.println(name + MESSAGES.getString("hitShip") + "(" + row + "," + col + ")\n");
         } else {
             square.setStatus(SquareStatus.MISSED);
-            System.out.println(name + " missed opponent's ship at (" + row + "," + col + ")");
+            System.out.println(name + MESSAGES.getString("missedHit") + "(" + row + "," + col + ")\n");
         }
     }
 
 
     public void makeAttack(Scanner scanner) {
-        System.out.println(name + ", enter the coordinates of your attack (row col): ");
+        System.out.println(Color.TEXT_BLUE + name + MESSAGES.getString("attackCoordinates"));
         int row = scanner.nextInt();
         int col = scanner.nextInt();
         Square square = opponentBoard.getSquare(row, col);
 
         square.takeAttack();
         if (square.getStatus() == SquareStatus.HIT) {
-            System.out.println(name + " hit opponent's ship at (" + row + "," + col + ")");
+            System.out.println(name + MESSAGES.getString("hitShip") + "(" + row + "," + col + ")\n");
             if (square.checkSunk()) {
-                System.out.println(name + " sunk opponent's ship!");
+                System.out.println(name + MESSAGES.getString("sunkShip"));
                 sunkShipCounter++;
             }
         } else {
             square.setStatus(SquareStatus.MISSED);
-            System.out.println(name + " missed opponent's ship at (" + row + "," + col + ")");
+            System.out.println(name + MESSAGES.getString("missedHit") + "(" + row + "," + col + ")\n");
         }
         System.out.println(opponentBoard);
     }
 
 
-
-
-    }
-/*
-        // TODO: Implement ship placement logic
-    }
-
-    public void takeTurn(Player opponent, int row, int col) {
-        boolean hit = opponent.getBoard().attack(row, col);
-        if (hit) {
-            System.out.println("Hit!");
-            incrementScore();
-            for (Ship ship : opponent.getShips()) {
-                if (ship.contains(row, col)) {
-                    ship.hit();
-                    if (!ship.isAlive()) {
-                        System.out.println("You sunk the " + ship.getName() + "!");
-                        opponent.decrementNumShips();
-                    }
-                    break;
-                }
-            }
-        } else {
-            System.out.println("Miss!");
-        }
-
-
-
-
-
-
-
-    /*
-    Ez az osztály fogja reprezentálni a játékosokat.
-    Minden játékosnak lesz egy táblája, amin elhelyezi a saját hajóit, és
-    lesznek olyan metódusai, amelyekkel lövést lehet leadni a másik játékos tábláján.
-     */
-
-    // has a logic responsible for handling shots.
-
-    // has a field of the List<Ship> type.
-
-    //  has an isAlive method that checks whether the player
-    //  lost all ships and returns true or false accordingly.
+}
 
 
 
