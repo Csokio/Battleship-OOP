@@ -22,7 +22,7 @@ public enum ShipType {
                 return shipType;
             }
         }
-        return null; // Or throw an exception if size is not valid
+        return null;
     }
 
 }

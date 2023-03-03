@@ -35,21 +35,6 @@ public class Player {
         return opponentBoard;
     }
 
-    public void attack(int row, int col) {
-        Square square = opponentBoard.getSquare(row, col);
-        square.takeAttack();
-    }
-
-    public void takeAttack(int row, int col) {
-        Square square = opponentBoard.getSquare(row, col);
-        if (square.getStatus() == SquareStatus.SHIP) {
-            square.setStatus(SquareStatus.HIT);
-            System.out.println(name + MESSAGES.getString("hitShip") + "(" + row + "," + col + ")\n");
-        } else {
-            square.setStatus(SquareStatus.MISSED);
-            System.out.println(name + MESSAGES.getString("missedHit") + "(" + row + "," + col + ")\n");
-        }
-    }
 
 
     public void makeAttack(Scanner scanner) {

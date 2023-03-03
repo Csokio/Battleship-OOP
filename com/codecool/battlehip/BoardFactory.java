@@ -22,7 +22,7 @@ public class BoardFactory {
 
             isPlacementOk = board.isPlacementOk(row, col, size, isHorizontal);
 
-            if (board.isPlacementOk(row, col, size, isHorizontal)) {
+            if (isPlacementOk) {
                 Ship ship = new Ship(ShipType.getBySize(size));
 
                 if (isHorizontal) {
@@ -40,7 +40,7 @@ public class BoardFactory {
                 }
 
                 board.addShip(ship);
-                shipCounter++; // növeljük a hajók számát
+                shipCounter++;
                 System.out.println(Color.TEXT_BLUE + MESSAGES.getString("placedShipNumber") + shipCounter + "\n");
                 System.out.println(board);
             } else {

@@ -14,7 +14,7 @@ public class Board {
 
     private Square[][] ocean;
 
-    private int shipCounter = 0;
+    //private int shipCounter = 0;
 
 
     // konstruktor
@@ -62,26 +62,6 @@ public class Board {
         return true;
     }
 
-    public void placeShip(Board board, Scanner scanner, Ship[] ships) throws SQLException {
-        System.out.println(Color.TEXT_BLUE + MESSAGES.getString("askForShipPlacement"));
-        int size = scanner.nextInt();
-        boolean isHorizontal = scanner.nextBoolean();
-
-        ShipType shipType = ShipType.getBySize(size);
-        Ship newShip = new Ship(shipType);
-
-
-        for (int i = 0; i < board.getSize(); i++) {
-            for (int j = 0; j < board.getSize(); j++) {
-                Square square = board.getSquare(i, j);
-                if (square.hasShip()) {
-                    newShip.addSquare(square);
-                }
-            }
-        }
-
-        ships[shipCounter++] = newShip;
-    }
 
 
     @Override

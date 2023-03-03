@@ -9,7 +9,7 @@ public class Square {
     private int x;
     private int y;
 
-    private boolean hit;
+    //private boolean hit;
 
     private SquareStatus status;
 
@@ -26,19 +26,6 @@ public class Square {
 
     }
 
-    //TODO mellőzött kódrészlet
-    public boolean isHit() {
-        if (hit) {
-            return false;
-        } else if (hasShip) {
-            hit = true;
-            ship.addHit();
-            return true;
-        } else {
-            hit = true;
-            return false;
-        }
-    }
 
     @Override
     public String toString() {
@@ -62,20 +49,7 @@ public class Square {
 
 
     //TODO mellőztük a használatát
-    public String getGraphicalRepresentation() {
-        switch (status) {
-            case EMPTY:
-                return "-";
-            case SHIP:
-                return "S";
-            case HIT:
-                return "X";
-            case MISSED:
-                return "O";
-            default:
-                return "";
-        }
-    }
+
 
 
     public Ship getShip() {
@@ -89,7 +63,7 @@ public class Square {
 
 
     public boolean checkSunk() {
-        if (hasShip && ship != null && ship.isSunk()) {
+        if (ship != null && ship.isSunk()) {
             for (Square square : ship.getSquares()) {
                 square.setStatus(SquareStatus.SKUNK);
             }
@@ -102,6 +76,8 @@ public class Square {
 
     public void takeAttack() {
         if (status == SquareStatus.SHIP) {
+            status = SquareStatus.HIT;
+        } else if (status == SquareStatus.HIT){
             status = SquareStatus.HIT;
         } else {
             status = SquareStatus.MISSED;

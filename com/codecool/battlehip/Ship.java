@@ -11,9 +11,7 @@ public class Ship {
     private final int size;
     private List<Square> squares;
 
-    private int hits;
 
-    private int sunkShipCount;
 
     public Ship(String name, int size) {
         this.name = name;
@@ -57,11 +55,6 @@ public class Ship {
         return true;
     }
 
-
-
-    public void addHit() {
-        hits++;
-    }
 
 
 

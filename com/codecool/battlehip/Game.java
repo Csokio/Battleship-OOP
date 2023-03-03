@@ -30,10 +30,9 @@ public class Game {
         Player player2 = new Player("Gizella", boardGizi, boardDenes);
 
 
-        //int toki = 0;
         int count = 1;
         System.out.println("\nPlayer 1: Dénes");
-        while (count < 2) {
+        while (count < 3) {
             int toki = Input.getShipLength();
             factory.manualPlacement(boardDenes, scanner, toki, true);
             count++;
@@ -41,7 +40,7 @@ public class Game {
 
         int count2 = 1;
         System.out.println("\nPlayer 2: Gizella");
-        while (count2 < 2) {
+        while (count2 < 3) {
             int fokos = Input.getShipLength();
             factory2.manualPlacement(boardGizi, scanner, fokos, false);
             count2++;
@@ -57,7 +56,6 @@ public class Game {
             player2.makeAttack(scanner2);
             if (player2.getSunkShipCounter() == factory2.shipCounter) {
                 System.out.println(Color.TEXT_PURPLE + MESSAGES.getString("winMessage2"));
-                break;
                 }
             }
         }
